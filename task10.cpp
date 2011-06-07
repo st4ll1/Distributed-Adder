@@ -31,15 +31,14 @@ public:
      
         //------------------------------------
         //calculate receives
-        int tester = 1;
-        //std::cout << "amount: " << amountOfNodes << std::endl;
-        //std::cout << "test: " << (nodeNumber & tester) << std::endl;
-        //std::cout << "test2: " << (nodeNumber + tester) << std::endl;
+        int tester = 1;       
         int receives = 0;
         while((nodeNumber & tester) == 0 && (nodeNumber + tester) < amountOfNodes){
             ++receives;
             tester = tester << 1;
-            //std::cout << "tester: " << tester << std::endl;
+        }
+        while((nodeNumber & tester) == 0){
+            tester = tester << 1;
         }
         
         std::cout << "receives: " << receives << std::endl;
@@ -59,7 +58,7 @@ public:
 
         } else {  
             std::cout << "send to node: " << (nodeNumber - tester) << std::endl;
-            int sum = receiveData();     
+            sum = receiveData();     
             std::cout << "received: " << sum << std::endl;
         }
         
